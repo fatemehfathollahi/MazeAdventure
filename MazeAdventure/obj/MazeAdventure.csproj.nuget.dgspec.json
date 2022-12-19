@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\project\\AtlasCopcp\\MazeAdventure\\MazeAdventure.csproj": {}
+    "C:\\project\\AtlasCopco\\MazeAdventure\\MazeAdventure.csproj": {}
   },
   "projects": {
-    "C:\\project\\AtlasCopcp\\MazeAdventure\\MazeAdventure.csproj": {
+    "C:\\project\\AtlasCopco\\MazeAdventure\\MazeAdventure.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\project\\AtlasCopcp\\MazeAdventure\\MazeAdventure.csproj",
+        "projectUniqueName": "C:\\project\\AtlasCopco\\MazeAdventure\\MazeAdventure.csproj",
         "projectName": "MazeAdventure",
-        "projectPath": "C:\\project\\AtlasCopcp\\MazeAdventure\\MazeAdventure.csproj",
+        "projectPath": "C:\\project\\AtlasCopco\\MazeAdventure\\MazeAdventure.csproj",
         "packagesPath": "C:\\Users\\Fatemeh\\.nuget\\packages\\",
-        "outputPath": "C:\\project\\AtlasCopcp\\MazeAdventure\\obj\\",
+        "outputPath": "C:\\project\\AtlasCopco\\MazeAdventure\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
