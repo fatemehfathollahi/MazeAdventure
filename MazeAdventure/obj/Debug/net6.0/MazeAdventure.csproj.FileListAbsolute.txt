@@ -1,0 +1,15 @@
+C:\project\AtlasCopco\MazeAdventure\bin\Debug\net6.0\MazeAdventure.exe
+C:\project\AtlasCopco\MazeAdventure\bin\Debug\net6.0\MazeAdventure.deps.json
+C:\project\AtlasCopco\MazeAdventure\bin\Debug\net6.0\MazeAdventure.runtimeconfig.json
+C:\project\AtlasCopco\MazeAdventure\bin\Debug\net6.0\MazeAdventure.dll
+C:\project\AtlasCopco\MazeAdventure\bin\Debug\net6.0\ref\MazeAdventure.dll
+C:\project\AtlasCopco\MazeAdventure\bin\Debug\net6.0\MazeAdventure.pdb
+C:\project\AtlasCopco\MazeAdventure\obj\Debug\net6.0\MazeAdventure.csproj.AssemblyReference.cache
+C:\project\AtlasCopco\MazeAdventure\obj\Debug\net6.0\MazeAdventure.GeneratedMSBuildEditorConfig.editorconfig
+C:\project\AtlasCopco\MazeAdventure\obj\Debug\net6.0\MazeAdventure.AssemblyInfoInputs.cache
+C:\project\AtlasCopco\MazeAdventure\obj\Debug\net6.0\MazeAdventure.AssemblyInfo.cs
+C:\project\AtlasCopco\MazeAdventure\obj\Debug\net6.0\MazeAdventure.csproj.CoreCompileInputs.cache
+C:\project\AtlasCopco\MazeAdventure\obj\Debug\net6.0\MazeAdventure.dll
+C:\project\AtlasCopco\MazeAdventure\obj\Debug\net6.0\ref\MazeAdventure.dll
+C:\project\AtlasCopco\MazeAdventure\obj\Debug\net6.0\MazeAdventure.pdb
+C:\project\AtlasCopco\MazeAdventure\obj\Debug\net6.0\MazeAdventure.genruntimeconfig.cache

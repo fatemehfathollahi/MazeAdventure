@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "ProjectMap": {
+    "0f30093d-a24f-4efe-b120-276a960208c8": {
+      "ProjectGuid": "0f30093d-a24f-4efe-b120-276a960208c8",
+      "DisplayName": "MazeAdventure",
+      "ColorIndex": 0
+    }
+  },
+  "NextColorIndex": 1
+}
