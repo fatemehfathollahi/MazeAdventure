@@ -8,7 +8,7 @@ public class Room
     public bool SouthWall { get; private set; } = true;
     public bool WestWall { get; private set; } = true;
     public string Description { get; private set; }
-    public bool HasTreasure { get; private set; }
+    public bool HasTreasure { get; set; }
     public bool HasTrap { get; private set; }
 
     public void RemoveWall(Direction roomWall)
@@ -36,7 +36,7 @@ public class Room
         }
         catch (Exception ex)
         {
-            throw new Exception("MazeCell.RemoveWall(CellWall cellWall): " + ex.ToString());
+            throw new Exception("MazeRoom.RemoveWall(roomWall roomWall): " + ex.ToString());
         }
     }
     public void SetDescription()
@@ -64,7 +64,6 @@ public class Room
             case RoomType.Hills:
                 {
                     Description = "You run on the hills and watch the wildflowers and you feel happy";
-                    HasTreasure = true;
                 }
                 break;
             default:
@@ -75,10 +74,8 @@ public class Room
     {
         try
         {
-            // Select a random cell to start.
             Type type = typeof(RoomType);
             Array values = type.GetEnumValues();
-            //Array values = Enum.GetValues(type);
             Random _randomChooseRoomType = new Random();
             int index = _randomChooseRoomType.Next(values.Length);
             RoomType value = (RoomType)values.GetValue(index);
@@ -87,7 +84,7 @@ public class Room
         }
         catch (Exception ex)
         {
-            throw new Exception("Maze.ChooseRandomCell(): " + ex.ToString());
+            throw new Exception("Maze.ChooseRandomRoomType(): " + ex.ToString());
         }
     }
 }

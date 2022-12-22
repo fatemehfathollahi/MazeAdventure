@@ -11,6 +11,14 @@ public class MazeGeneratorService
     private ObservableCollection<Room> _rooms;
     private readonly Random _randomNumberGenerator;
     #endregion
+    public int MazeSize
+    {
+        get { return _mazeWidth * _mazeHeight; }
+    }
+    public ObservableCollection<Room> Rooms
+    {
+        get { return _rooms; }
+    }
 
     public MazeGeneratorService()
     {
@@ -193,7 +201,7 @@ public class MazeGeneratorService
         try
         {
             // Select a random cell to start.
-            int cellIndex = _randomNumberGenerator.Next(_mazeHeight * _mazeWidth);
+            int cellIndex = _randomNumberGenerator.Next(MazeSize);
             if (IsCellIndexValid(cellIndex))
             {
                 Room entranceRoom = _rooms.ElementAt(cellIndex);
@@ -217,12 +225,32 @@ public class MazeGeneratorService
     {
         _mazeWidth = mazeSize;
         _mazeHeight = mazeSize;
-        while (_rooms.Count != _mazeWidth * _mazeHeight)
+        while (_rooms.Count != MazeSize)
         {
             var room = new Room();
             room.SetRoomType();
             room.SetDescription();
            _rooms.Add(room);
+        }
+        if (_rooms.Count > 0)
+        {
+            var roomId = ChooseRandomRoomForTreasure();
+            _rooms.ElementAt(roomId).HasTreasure = true;
+        }
+    }
+    private int ChooseRandomRoomForTreasure()
+    {
+        try
+        {
+            Random _randomChooseRoom = new Random();
+            var newRooms = _rooms.Where(r => !r.HasTrap).ToList();
+            int index = _randomChooseRoom.Next(newRooms.Count);
+            return index;
+
+        }
+        catch (Exception ex)
+        {
+            throw new Exception("Maze.ChooseRandomRoom(): " + ex.ToString());
         }
     }
     #endregion
