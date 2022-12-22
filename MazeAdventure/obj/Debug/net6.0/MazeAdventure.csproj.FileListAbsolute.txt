@@ -4,7 +4,6 @@ C:\project\AtlasCopco\MazeAdventure\bin\Debug\net6.0\MazeAdventure.runtimeconfig
 C:\project\AtlasCopco\MazeAdventure\bin\Debug\net6.0\MazeAdventure.dll
 C:\project\AtlasCopco\MazeAdventure\bin\Debug\net6.0\ref\MazeAdventure.dll
 C:\project\AtlasCopco\MazeAdventure\bin\Debug\net6.0\MazeAdventure.pdb
-C:\project\AtlasCopco\MazeAdventure\obj\Debug\net6.0\MazeAdventure.csproj.AssemblyReference.cache
 C:\project\AtlasCopco\MazeAdventure\obj\Debug\net6.0\MazeAdventure.GeneratedMSBuildEditorConfig.editorconfig
 C:\project\AtlasCopco\MazeAdventure\obj\Debug\net6.0\MazeAdventure.AssemblyInfoInputs.cache
 C:\project\AtlasCopco\MazeAdventure\obj\Debug\net6.0\MazeAdventure.AssemblyInfo.cs

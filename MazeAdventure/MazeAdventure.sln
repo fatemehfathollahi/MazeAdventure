@@ -5,6 +5,8 @@ VisualStudioVersion = 17.0.31903.59
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MazeAdventure", "MazeAdventure.csproj", "{0F30093D-A24F-4EFE-B120-276A960208C8}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MazeAdventure.test", "..\MazeAdventure.test\MazeAdventure.test.csproj", "{B7D06B93-EE61-4528-986A-B79E13D12F39}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{0F30093D-A24F-4EFE-B120-276A960208C8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0F30093D-A24F-4EFE-B120-276A960208C8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0F30093D-A24F-4EFE-B120-276A960208C8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B7D06B93-EE61-4528-986A-B79E13D12F39}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B7D06B93-EE61-4528-986A-B79E13D12F39}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B7D06B93-EE61-4528-986A-B79E13D12F39}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B7D06B93-EE61-4528-986A-B79E13D12F39}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
