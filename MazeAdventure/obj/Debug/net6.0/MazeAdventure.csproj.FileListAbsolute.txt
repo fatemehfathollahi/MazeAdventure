@@ -12,4 +12,3 @@ C:\project\AtlasCopco\MazeAdventure\obj\Debug\net6.0\MazeAdventure.dll
 C:\project\AtlasCopco\MazeAdventure\obj\Debug\net6.0\ref\MazeAdventure.dll
 C:\project\AtlasCopco\MazeAdventure\obj\Debug\net6.0\MazeAdventure.pdb
 C:\project\AtlasCopco\MazeAdventure\obj\Debug\net6.0\MazeAdventure.genruntimeconfig.cache
-C:\project\AtlasCopco\MazeAdventure\obj\Debug\net6.0\MazeAdventure.csproj.AssemblyReference.cache

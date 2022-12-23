@@ -1,14 +1,17 @@
-﻿using MazeAdventure.Models;
+﻿using MazeAdventure.Common;
+using MazeAdventure.Models;
 using System.Collections.ObjectModel;
+using System.ComponentModel;
 
 namespace MazeAdventure.Services;
 public class MazeGeneratorService
 {
     #region feilds
+    private bool _isBehaviorChanged;
     private int _mazeWidth;
     private int _mazeHeight;
     private readonly Stack<Room> _mazeGeneratorStack;
-    private ObservableCollection<Room> _rooms;
+    private readonly ObservableCollection<Room> _rooms;
     private readonly Random _randomNumberGenerator;
     #endregion
     public int MazeSize
@@ -37,7 +40,7 @@ public class MazeGeneratorService
     public void BuildMaze(int size)
     {
         CreateMazeRooms(size);
-        Room currentRoom = ChooseRandomStartRoom();
+        Room currentRoom = ChooseRandomEntrance();
         currentRoom.RoomState = RoomState.Visited;
         GenerateNewMaze(currentRoom);
     }
@@ -47,7 +50,7 @@ public class MazeGeneratorService
     }
     public int GetEntranceRoom()
     {
-        Room entranceRoom = ChooseRandomStartRoom();
+        Room entranceRoom = ChooseRandomEntrance();
         return _rooms.IndexOf(entranceRoom);
     }
     public bool HasTreasure(int roomId)
@@ -73,22 +76,22 @@ public class MazeGeneratorService
         bool southEdge = (roomId + _mazeWidth) >= (_mazeWidth * _mazeHeight);
 
         // North cell.
-        if (direction == 'N' && !northEdge && IsCellIndexValid(northNeighbourIndex))
+        if (direction == 'N' && !northEdge && IsRoomIndexValid(northNeighbourIndex))
         {
             return northNeighbourIndex;
         }
         // East cell.
-        else if (direction == 'E' && !eastEdge && IsCellIndexValid(eastNeighbourIndex))
+        else if (direction == 'E' && !eastEdge && IsRoomIndexValid(eastNeighbourIndex))
         {
             return eastNeighbourIndex;
         }
         // South cell.
-        else if (direction == 'S' && !southEdge && IsCellIndexValid(southNeighbourIndex))
+        else if (direction == 'S' && !southEdge && IsRoomIndexValid(southNeighbourIndex))
         {
             return southNeighbourIndex;
         }
         // West cell.
-        else if (direction == 'W' && !westEdge && IsCellIndexValid(westNeighbourIndex))
+        else if (direction == 'W' && !westEdge && IsRoomIndexValid(westNeighbourIndex))
         {
             return westNeighbourIndex;
         }
@@ -120,22 +123,22 @@ public class MazeGeneratorService
                 // Retrieve the current cell's unvisited neighbours.
                 List<Room> unvisitedNeighbours = new List<Room>();
                 // North cell.
-                if (!northEdge && IsCellIndexValid(northNeighbourIndex) && _rooms[northNeighbourIndex].RoomState == RoomState.Default)
+                if (!northEdge && IsRoomIndexValid(northNeighbourIndex) && _rooms[northNeighbourIndex].RoomState == RoomState.Default)
                 {
                     unvisitedNeighbours.Add(_rooms[northNeighbourIndex]);
                 }
                 // East cell.
-                if (!eastEdge && IsCellIndexValid(eastNeighbourIndex) && _rooms[eastNeighbourIndex].RoomState == RoomState.Default)
+                if (!eastEdge && IsRoomIndexValid(eastNeighbourIndex) && _rooms[eastNeighbourIndex].RoomState == RoomState.Default)
                 {
                     unvisitedNeighbours.Add(_rooms[eastNeighbourIndex]);
                 }
                 // South cell.
-                if (!southEdge && IsCellIndexValid(southNeighbourIndex) && _rooms[southNeighbourIndex].RoomState == RoomState.Default)
+                if (!southEdge && IsRoomIndexValid(southNeighbourIndex) && _rooms[southNeighbourIndex].RoomState == RoomState.Default)
                 {
                     unvisitedNeighbours.Add(_rooms[southNeighbourIndex]);
                 }
                 // West cell.
-                if (!westEdge && IsCellIndexValid(westNeighbourIndex) && _rooms[westNeighbourIndex].RoomState == RoomState.Default)
+                if (!westEdge && IsRoomIndexValid(westNeighbourIndex) && _rooms[westNeighbourIndex].RoomState == RoomState.Default)
                 {
                     unvisitedNeighbours.Add(_rooms[westNeighbourIndex]);
                 }
@@ -170,10 +173,10 @@ public class MazeGeneratorService
 
                     // Put the current cell on the stack.
                     _mazeGeneratorStack.Push(currentRoom);
-
                     // Set the selected neighbour as visited.
                     selectedNeighbour.RoomState = RoomState.Visited;
-
+                    // behavior is triggered when room visited 
+                    selectedNeighbour.PropertyChanged += OnMazePropertyChanged;
                     // Repeat the process with the selected neighbour as the new current cell.
                     GenerateNewMaze(selectedNeighbour);
                 }
@@ -196,30 +199,35 @@ public class MazeGeneratorService
             throw new Exception("Maze.GenerateNewMaze(Room currentCell): " + ex.ToString());
         }
     }
-    private Room ChooseRandomStartRoom()
+
+    private void OnMazePropertyChanged(object? sender, PropertyChangedEventArgs e)
+    {
+        _isBehaviorChanged = true;
+    }
+
+    private Room ChooseRandomEntrance()
     {
         try
         {
-            // Select a random cell to start.
-            int cellIndex = _randomNumberGenerator.Next(MazeSize);
-            if (IsCellIndexValid(cellIndex))
+            // Select a random cell to entrance.
+            int roomIndex = _randomNumberGenerator.Next(MazeSize);
+            if (IsRoomIndexValid(roomIndex))
             {
-                Room entranceRoom = _rooms.ElementAt(cellIndex);
-                return _rooms.ElementAt(cellIndex);
+                return _rooms.ElementAt(roomIndex);
             }
             else
             {
-                throw new Exception("Unable to choose a randmom cell.");
+                throw new Exception("Unable to choose a randmom room.");
             }
         }
         catch (Exception ex)
         {
-            throw new Exception("Maze.ChooseRandomCell(): " + ex.ToString());
+            throw new Exception("Maze.ChooseRandomRoom(): " + ex.ToString());
         }
     } 
-    private bool IsCellIndexValid(int cellIndex)
+    private bool IsRoomIndexValid(int roomId)
     {
-        return cellIndex >= 0 && cellIndex < _rooms.Count;
+        return roomId >= 0 && roomId < _rooms.Count;
     }
     private void CreateMazeRooms(int mazeSize)
     {
@@ -242,7 +250,7 @@ public class MazeGeneratorService
     {
         try
         {
-            Random _randomChooseRoom = new Random();
+            Random _randomChooseRoom = new();
             var newRooms = _rooms.Where(r => !r.HasTrap).ToList();
             int index = _randomChooseRoom.Next(newRooms.Count);
             return index;

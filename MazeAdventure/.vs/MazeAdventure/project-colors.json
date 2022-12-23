@@ -5,7 +5,17 @@
       "ProjectGuid": "0f30093d-a24f-4efe-b120-276a960208c8",
       "DisplayName": "MazeAdventure",
       "ColorIndex": 0
+    },
+    "b7d06b93-ee61-4528-986a-b79e13d12f39": {
+      "ProjectGuid": "b7d06b93-ee61-4528-986a-b79e13d12f39",
+      "DisplayName": "MazeAdventure.test",
+      "ColorIndex": 1
+    },
+    "a2fe74e1-b743-11d0-ae1a-00a0c90fffc3": {
+      "ProjectGuid": "a2fe74e1-b743-11d0-ae1a-00a0c90fffc3",
+      "DisplayName": "Miscellaneous Files",
+      "ColorIndex": -1
     }
   },
-  "NextColorIndex": 1
+  "NextColorIndex": 2
 }

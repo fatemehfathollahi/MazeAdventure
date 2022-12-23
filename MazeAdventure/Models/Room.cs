@@ -1,15 +1,31 @@
-﻿namespace MazeAdventure.Models;
-public class Room
+﻿using MazeAdventure.Common;
+
+namespace MazeAdventure.Models;
+public class Room : NotificationBase
 {
     public RoomType RoomType { get; set; } = RoomType.Normal;
-    public RoomState RoomState { get; set; } = RoomState.Default;
+
+    private RoomState roomState = RoomState.Default;
+    public RoomState RoomState 
+    { 
+        get {  return roomState; }  
+        set 
+        { 
+            roomState = value;
+            if(roomState == RoomState.Visited)
+            {
+                RaisePropertyChanged();
+            }
+            
+        }  
+    }
     public bool NorthWall { get; private set; } = true;
     public bool EastWall { get; private set; } = true;
     public bool SouthWall { get; private set; } = true;
     public bool WestWall { get; private set; } = true;
     public string Description { get; private set; }
     public bool HasTreasure { get; set; }
-    public bool HasTrap { get; private set; }
+    public bool HasTrap { get; set; }
 
     public void RemoveWall(Direction roomWall)
     {
@@ -47,7 +63,9 @@ public class Room
                 Description = "This room is a normal";
                 break;
             case RoomType.Forest:
-                Description = "You see a lot of thick and tall trees, but be careful of wild animals while you walk";
+                {
+                    Description = "You see a lot of thick and tall trees, but be careful of wild animals while you walk";
+                }
                 break;
             case RoomType.Dessert:
                 {
@@ -76,7 +94,7 @@ public class Room
         {
             Type type = typeof(RoomType);
             Array values = type.GetEnumValues();
-            Random _randomChooseRoomType = new Random();
+            Random _randomChooseRoomType = new();
             int index = _randomChooseRoomType.Next(values.Length);
             RoomType value = (RoomType)values.GetValue(index);
             RoomType = value;
