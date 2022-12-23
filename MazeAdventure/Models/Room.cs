@@ -6,18 +6,18 @@ public class Room : NotificationBase
     public RoomType RoomType { get; set; } = RoomType.Normal;
 
     private RoomState roomState = RoomState.Default;
-    public RoomState RoomState 
-    { 
-        get {  return roomState; }  
-        set 
-        { 
+    public RoomState RoomState
+    {
+        get { return roomState; }
+        set
+        {
             roomState = value;
-            if(roomState == RoomState.Visited)
+            if (roomState == RoomState.Visited)
             {
                 RaisePropertyChanged();
             }
-            
-        }  
+
+        }
     }
     public bool NorthWall { get; private set; } = true;
     public bool EastWall { get; private set; } = true;

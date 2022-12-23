@@ -1,5 +1,4 @@
-﻿using MazeAdventure.Common;
-using MazeAdventure.Models;
+﻿using MazeAdventure.Models;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 
@@ -199,12 +198,10 @@ public class MazeGeneratorService
             throw new Exception("Maze.GenerateNewMaze(Room currentCell): " + ex.ToString());
         }
     }
-
     private void OnMazePropertyChanged(object? sender, PropertyChangedEventArgs e)
     {
         _isBehaviorChanged = true;
     }
-
     private Room ChooseRandomEntrance()
     {
         try
@@ -224,7 +221,7 @@ public class MazeGeneratorService
         {
             throw new Exception("Maze.ChooseRandomRoom(): " + ex.ToString());
         }
-    } 
+    }
     private bool IsRoomIndexValid(int roomId)
     {
         return roomId >= 0 && roomId < _rooms.Count;
@@ -238,7 +235,7 @@ public class MazeGeneratorService
             var room = new Room();
             room.SetRoomType();
             room.SetDescription();
-           _rooms.Add(room);
+            _rooms.Add(room);
         }
         if (_rooms.Count > 0)
         {
